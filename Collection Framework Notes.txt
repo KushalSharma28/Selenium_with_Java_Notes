@@ -1,0 +1,25 @@
+Collection Framework Notes
+
+Lists
+
+Array List: Dynamic array (resizable) with fast random access but slower insertions/deletions in the middle.
+
+Linked List: Doubly-linked list with fast insertions/deletions but slower random access (traversing required).
+
+=============================================================================================================================
+
+Set
+
+HashSet: Unordered collection of unique elements (uses hash table), allows null, O(1) average time for operations.
+
+TreeSet: Sorted (natural order/custom comparator) unique elements (uses Red-Black tree), no null, O(log n) time for operations.
+
+=============================================================================================================================
+
+Map
+
+HashMap: Unordered key-value pairs (uses hash table), allows one null key and multiple null values, O(1) average time for operations.
+
+TreeMap: Sorted key-value pairs (natural order/custom comparator), no null keys (but allows null values), O(log n) time for operations.
+
+=============================================================================================================================

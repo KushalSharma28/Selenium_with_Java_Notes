@@ -1,0 +1,116 @@
+Java Notes
+
+===========================================================================================================================
+
+Class, objects and Functions
+
+Class: A blueprint in Java that defines the structure (attributes) and behavior (methods) of objects.
+A class is a blueprint or template for creating objects. It defines the structure and behavior (attributes and methods) that the objects created from the class will have. A class does not occupy memory until an object is instantiated from it.
+
+Object
+An instance of a class, encapsulating data (attributes) and behavior (methods).
+
+Function
+A block of code performing a specific task, defined with a name and parameters.
+
+==========================================================================================================================
+
+OOPS Concept
+
+Encapsulation: Bundling data and methods within a class, restricting direct access.
+
+Abstraction: Hiding complex details, exposing only essential features.
+
+Inheritance: Creating new classes from existing ones to reuse code.
+
+Polymorphism: Allowing objects to take multiple forms, often through method overriding or overloading.
+
+===========================================================================================================================
+
+Access Modifiers
+
+Access Modifiers: Keywords in Java that control the visibility/accessibility of classes, methods, and variables.
+
+public: Accessible everywhere.
+
+private: Accessible only within the same class.
+
+protected: Accessible within the same package + subclasses (even if in different packages).
+
+default (no keyword): Accessible only within the same package.
+
+===========================================================================================================================
+
+Collections
+
+Collection: A framework in Java to store, manipulate, and group objects (e.g., lists, sets, maps).
+
+List: Ordered collection allowing duplicates (e.g., ArrayList, LinkedList).
+
+Set: Unordered collection of unique elements (e.g., HashSet, TreeSet).
+
+Map: Key-value pairs, keys unique (e.g., HashMap, TreeMap).
+
+===========================================================================================================================
+
+Method Overloading: Defining multiple methods with the same name but different parameters within the same class.
+
+Method Overriding: Redefining a method in a subclass that is already defined in its superclass, with the same signature.
+
+===========================================================================================================================
+
+Constructor: Special method to initialize objects when created.
+
+Types:
+
+Default: No arguments, auto-created if none defined.
+
+Parameterized: Takes arguments to initialize objects with specific values.
+
+Copy: Initializes an object using another object of the same class.
+
+Constructor Overloading: Defining multiple constructors in the same class with different parameters.
+
+Constructor Overriding: Not possible in Java—constructors cannot be overridden (only inherited).
+
+===========================================================================================================================
+
+Exception: An event disrupting normal program flow, often an error.
+
+Types:
+
+Checked: Compiler-enforced, must be handled (e.g., IOException).
+
+Unchecked: Runtime exceptions, not enforced (e.g., NullPointerException).
+
+Error: Serious issues beyond control (e.g., OutOfMemoryError).
+
+try: Block of code to test for errors during execution.
+
+catch: Block to handle exceptions thrown in the try block.
+
+finally: Block that executes code regardless of whether an exception occurred, used for cleanup.
+
+============================================================================================================================
+
+Abstract Class: A class that cannot be instantiated (no objects), used as a base for subclasses. May contain abstract/non-abstract methods.
+
+Abstract Method: A method without a body (only declaration), must be overridden by the subclass.
+
+============================================================================================================================
+
+Interface: A blueprint of a class in Java that defines abstract methods (no body) and constants (public static final).
+
+100% Abstract (before Java 8) → Only method declarations.
+
+Can have:
+
+Default methods (with body, Java 8+).
+
+Static methods (Java 8+).
+
+Private methods (Java 9+).
+
+Used for: Multiple inheritance (a class can implement multiple interfaces).
+
+============================================================================================================================

@@ -1,0 +1,18 @@
+Selenium WebDriver
+
+* How do you locate elements using XPath?
+* What is the difference between `driver.findElement()` and `driver.findElements()`?
+* How do you handle dynamic web elements in Selenium?
+* Explain how to handle dropdowns and alerts using Selenium WebDriver.
+
+TestNG Basics
+
+* List some common TestNG annotations you use.
+* How do you set test execution priority in TestNG?
+* Explain how to run tests in parallel using TestNG.
+* How do you generate and customize reports in TestNG?
+
+Real-Time Scenario
+
+Scenario: Automating a login page where the login button sometimes takes time to appear.
+Question: How will you handle such a scenario in your automation script using Selenium best practices?

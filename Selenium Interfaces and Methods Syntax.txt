@@ -1,0 +1,91 @@
+Selenium Interfaces and Methods Syntax
+
+Drag and Drop: is a method in action class which is used in selenium
+
+drag and drop Syntax
+
+WebElement From=driver.findElement(By.xpath("//*[@id='credit2']/a"));
+WebElement To=driver.findElement(By.xpath("//*[@id='bank']/li"));
+Actions action = new Actions(driver);
+action.dragAndDrop(SourceElement, TargetElement).build().perform();
+action.dragAndDrop(From, To).build().perform();
+
+//Building a drag and drop action
+Action dragAndDrop = builder.clickAndHold(fromElement)
+.moveToElement(toElement)
+.release(toElement)
+.build();
+
+//Performing the drag and drop action
+dragAndDrop.perform();
+================================================================================
+Alert Syntax
+
+In Selenium, Alert is an interface. It defines a set of methods for handling browser alerts (pop-up windows that require user interaction, like "OK" or "Cancel")
+
+driver.switchTo().alert().dismiss();
+
+driver.switchTo().alert().accept();
+
+driver.switchTo().alert().getText();
+
+driver.switchTo().alert().sendKeys("Text");
+
+Alert alert = driver.switchTo().alert(); // switch to alert
+
+String alertMessage= driver.switchTo().alert().getText(); // capture alert message
+
+System.out.println(alertMessage); // Print Alert Message
+
+alert.accept();
+=================================================================================
+Waits Syntax in Selenium
+
+In Selenium, implicit wait applies a global timeout to all element searches, while explicit wait is used to wait for specific conditions or elements to appear, offering more control and precision
+
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+// explicit wait - to wait for the compose button to be click-able
+WebDriverWait wait = new WebDriverWait(driver,30);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'COMPOSE')]")));
+==========================================================================================================
+Screenshot Syntax
+
+In Selenium, the ability to take screenshots is facilitated by the TakesScreenshot interface. This interface defines the getScreenshotAs() method, which is used to capture a screenshot and store it in a specified format and location. 
+
+File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+String screenshotBase64 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
+
+//Convert web driver object to TakeScreenshot
+TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+//Call getScreenshotAs method to create image file
+File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+//Move image file to new destination
+File DestFile=new File(fileWithPath);
+//Copy file at destination
+FileUtils.copyFile(SrcFile, DestFile);
+
+//Use TakesScreenshot method to capture screenshot
+TakesScreenshot screenshot = (TakesScreenshot)driver;
+//Saving the screenshot in desired location
+File source = screenshot.getScreenshotAs(OutputType.FILE);
+//Path to the location to save screenshot
+FileUtils.copyFile(source, new File("./SeleniumScreenshots/Screen.png"));
+System.out.println("Screenshot is captured");
+==========================================================================================================
+Upload Syntax
+
+In Selenium, "upload" is a general term for the action of transferring a file from the user's computer to a web application.
+
+Web element file = driver.findElement(By.xpath("")).click(); //link text locator for uploading a photo..
+WebElement addFile = driver.findElement(By.linkText("Upload a photo...")).click();
+// Mention the own path of the file location
+
+// Add file method 
+addFile.sendKeys("D:\Big Data on AWS\Images\caps.jpeg");// For setting a profile picture
+
+
+//Locating upload filebutton
+WebElement upload =driver.findElement(By.linkText("Upload a Document:( .tex, .txt, .doc, .docx, .odt, .pdf, .rtf )"));
+upload.sendKeys("D:\\path\\File.txt");
+==========================================================================================================

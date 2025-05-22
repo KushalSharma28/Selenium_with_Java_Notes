@@ -1,0 +1,75 @@
+* Explain the difference between `==` and `.equals()` in Java.
+
+== operator:
+
+-Compares primitive values by their actual value (e.g., int a = 5; int b = 5; a == b → true).
+
+-For objects, it compares memory references (whether two references point to the same object in memory).
+
+Example:
+String s1 = new String("hello");
+String s2 = new String("hello");
+System.out.println(s1 == s2); // false (different memory locations)
+
+.equals() method:
+
+-Defined in the Object class and can be overridden (e.g., in String, Integer).
+
+-Compares the content or logical equality of objects.
+
+Example:
+String s1 = new String("hello");
+String s2 = new String("hello");
+System.out.println(s1.equals(s2)); // true (same content)
+
+=============================================================================================================
+
+* What are the different access modifiers in Java?
+
+Java has four access modifiers:
+
+public: Accessible from any class.
+
+Example: public int x;
+
+protected: Accessible within the same package + subclasses (even in other packages).
+
+Example: protected int y;
+
+default (no keyword): Accessible only within the same package.
+
+Example: int z;
+
+private: Accessible only within the same class.
+
+Example: private int a;
+
+=============================================================================================================
+
+* Describe the purpose of `final`, `finally`, and `finalize()`.
+
+=============================================================================================================
+
+* Can a Java class implement multiple interfaces? Explain.
+
+=============================================================================================================
+
+* Explain polymorphism with an example.
+
+=============================================================================================================
+
+* Differentiate between method overloading and method overriding.
+
+=============================================================================================================
+
+* What are constructors? Describe different types of constructors in Java.
+
+=============================================================================================================
+
+* Write a Java method to remove duplicate characters from a string.
+
+=============================================================================================================
+
+* Write a Java program to find the second-highest number in an integer array.
+
+=============================================================================================================

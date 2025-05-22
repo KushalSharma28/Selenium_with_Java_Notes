@@ -1,4 +1,4 @@
-* Explain the difference between `==` and `.equals()` in Java.
+1. Explain the difference between `==` and `.equals()` in Java.
 
 == operator:
 
@@ -24,7 +24,7 @@ System.out.println(s1.equals(s2)); // true (same content)
 
 =============================================================================================================
 
-* What are the different access modifiers in Java?
+2. What are the different access modifiers in Java?
 
 Java has four access modifiers:
 
@@ -46,30 +46,30 @@ Example: private int a;
 
 =============================================================================================================
 
-* Describe the purpose of `final`, `finally`, and `finalize()`.
+3. Describe the purpose of `final`, `finally`, and `finalize()`.
 
 =============================================================================================================
 
-* Can a Java class implement multiple interfaces? Explain.
+4. Can a Java class implement multiple interfaces? Explain.
 
 =============================================================================================================
 
-* Explain polymorphism with an example.
+5. Explain polymorphism with an example.
 
 =============================================================================================================
 
-* Differentiate between method overloading and method overriding.
+6. Differentiate between method overloading and method overriding.
 
 =============================================================================================================
 
-* What are constructors? Describe different types of constructors in Java.
+7. What are constructors? Describe different types of constructors in Java.
 
 =============================================================================================================
 
-* Write a Java method to remove duplicate characters from a string.
+8. Write a Java method to remove duplicate characters from a string.
 
 =============================================================================================================
 
-* Write a Java program to find the second-highest number in an integer array.
+9. Write a Java program to find the second-highest number in an integer array.
 
 =============================================================================================================

@@ -48,13 +48,66 @@ Example: private int a;
 
 3. Describe the purpose of `final`, `finally`, and `finalize()`.
 
+final:
+
+Variable: Value cannot be changed (constant).
+Example: final int x = 10;
+
+Method: Cannot be overridden in a subclass.
+Example: public final void display() {}
+
+Class: Cannot be extended (no subclasses allowed).
+Example: public final class MyClass {}
+
+finally:
+
+A block in try-catch that always executes (used for cleanup like closing resources).
+
+Example:
+try { /* code */ } 
+catch (Exception e) { /* handle */ } 
+finally { /* always runs */ }
+
+finalize():
+
+A method in Object class called by the garbage collector before destroying an object.
+
+Rarely used (deprecated in Java 9+ due to unpredictability).
+
 =============================================================================================================
 
 4. Can a Java class implement multiple interfaces? Explain.
 
+Yes, a Java class can implement multiple interfaces (but can extend only one class).
+
+Example:
+interface A { void foo(); }
+interface B { void bar(); }
+class C implements A, B {
+    public void foo() {}
+    public void bar() {}
+}
+
 =============================================================================================================
 
 5. Explain polymorphism with an example.
+
+Polymorphism allows one interface to represent different underlying forms (e.g., method overloading/overriding).
+
+Example (Runtime Polymorphism via Method Overriding):
+class Animal {
+    void sound() { System.out.println("Animal sound"); }
+}
+class Dog extends Animal {
+    @Override
+    void sound() { System.out.println("Bark"); }
+}
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog(); // Upcasting
+        a.sound(); // Output: Bark (Dog's method called)
+    }
+}
 
 =============================================================================================================
 
@@ -64,12 +117,66 @@ Example: private int a;
 
 7. What are constructors? Describe different types of constructors in Java.
 
+Constructors initialize objects when they are created.
+
+Default Constructor: No arguments; provided by Java if no constructor is defined.
+class A { 
+    A() { } // Default
+}
+
+Parameterized Constructor: Takes arguments to initialize fields.
+class B {
+    int x;
+    B(int x) { this.x = x; }
+}
+
+Copy Constructor: Creates an object using another object of the same class.
+class C {
+    int x;
+    C(C obj) { this.x = obj.x; }
+}
+
 =============================================================================================================
 
 8. Write a Java method to remove duplicate characters from a string.
 
+public static String removeDuplicates(String str) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+        char c = str.charAt(i);
+        if (sb.indexOf(String.valueOf(c)) == -1) {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+
+// Example:
+System.out.println(removeDuplicates("hello")); // "helo"
+
 =============================================================================================================
 
 9. Write a Java program to find the second-highest number in an integer array.
+
+public static int findSecondHighest(int[] arr) {
+    if (arr.length < 2) {
+        throw new IllegalArgumentException("Array too small");
+    }
+    int first = Integer.MIN_VALUE;
+    int second = Integer.MIN_VALUE;
+    for (int num : arr) {
+        if (num > first) {
+            second = first;
+            first = num;
+        } else if (num > second && num != first) {
+            second = num;
+        }
+    }
+    return second;
+}
+
+// Example:
+int[] arr = {12, 35, 1, 10, 34, 1};
+System.out.println(findSecondHighest(arr)); // 34
 
 =============================================================================================================

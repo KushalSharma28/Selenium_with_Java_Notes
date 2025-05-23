@@ -24,29 +24,7 @@ System.out.println(s1.equals(s2)); // true (same content)
 
 =============================================================================================================
 
-2. What are the different access modifiers in Java?
-
-Java has four access modifiers:
-
-public: Accessible from any class.
-
-Example: public int x;
-
-protected: Accessible within the same package + subclasses (even in other packages).
-
-Example: protected int y;
-
-default (no keyword): Accessible only within the same package.
-
-Example: int z;
-
-private: Accessible only within the same class.
-
-Example: private int a;
-
-=============================================================================================================
-
-3. Describe the purpose of `final`, `finally`, and `finalize()`.
+2. Describe the purpose of `final`, `finally`, and `finalize()`.
 
 final:
 
@@ -76,7 +54,7 @@ Rarely used (deprecated in Java 9+ due to unpredictability).
 
 =============================================================================================================
 
-4. Can a Java class implement multiple interfaces? Explain.
+3. Can a Java class implement multiple interfaces? Explain.
 
 Yes, a Java class can implement multiple interfaces (but can extend only one class).
 
@@ -90,7 +68,7 @@ class C implements A, B {
 
 =============================================================================================================
 
-5. Explain polymorphism with an example.
+4. Explain polymorphism with an example.
 
 Polymorphism allows one interface to represent different underlying forms (e.g., method overloading/overriding).
 
@@ -111,11 +89,7 @@ public class Main {
 
 =============================================================================================================
 
-6. Differentiate between method overloading and method overriding.
-
-=============================================================================================================
-
-7. What are constructors? Describe different types of constructors in Java.
+5. What are constructors? Describe different types of constructors in Java.
 
 Constructors initialize objects when they are created.
 
@@ -136,9 +110,10 @@ class C {
     C(C obj) { this.x = obj.x; }
 }
 
+
 =============================================================================================================
 
-8. Write a Java method to remove duplicate characters from a string.
+6. Write a Java method to remove duplicate characters from a string.
 
 public static String removeDuplicates(String str) {
     StringBuilder sb = new StringBuilder();
@@ -156,7 +131,7 @@ System.out.println(removeDuplicates("hello")); // "helo"
 
 =============================================================================================================
 
-9. Write a Java program to find the second-highest number in an integer array.
+7. Write a Java program to find the second-highest number in an integer array.
 
 public static int findSecondHighest(int[] arr) {
     if (arr.length < 2) {
@@ -179,4 +154,11 @@ public static int findSecondHighest(int[] arr) {
 int[] arr = {12, 35, 1, 10, 34, 1};
 System.out.println(findSecondHighest(arr)); // 34
 
+=============================================================================================================
+
+8. 
+
+=============================================================================================================
+
+9. 
 =============================================================================================================

@@ -1,9 +1,46 @@
 Selenium WebDriver
 
 * How do you locate elements using XPath?
+
+Absolute XPath: /html/body/div[1]/form/input[1] (starts from root)
+
+Relative XPath: //input[@name='username'] (more flexible)
+
+Using attributes: //*[@id='loginBtn']
+
+Using text: //button[text()='Login']
+
+Using contains: //div[contains(@class,'error')]
+
+=========================================================================================
+
 * What is the difference between `driver.findElement()` and `driver.findElements()`?
+
+findElement(): Returns the first matching web element (throws NoSuchElementException if not found)
+
+findElements(): Returns a list of all matching web elements (returns empty list if none found)
+
+=========================================================================================
+
 * How do you handle dynamic web elements in Selenium?
+
+Explicit Waits: Wait for specific conditions
+
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("dynamicElement")));
+
+Relative XPaths: Avoid absolute paths that might change
+
+CSS Selectors: Often more stable than XPath
+
+Using starts-with/contains: For dynamic IDs/classes
+
+JavaScript execution: As a fallback
+
+=========================================================================================
 * Explain how to handle dropdowns and alerts using Selenium WebDriver.
+
+=========================================================================================
 
 TestNG Basics
 

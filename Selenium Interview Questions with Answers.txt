@@ -38,10 +38,181 @@ Using starts-with/contains: For dynamic IDs/classes
 JavaScript execution: As a fallback
 
 =========================================================================================
+
 * Explain how to handle dropdowns and alerts using Selenium WebDriver.
 
 =========================================================================================
 
+* how to find list of multiple web elements in selenium
+
+find 20 web elements
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class Find20Elements 
+{
+    public static void main(String[] args) 
+    {
+        // Set up WebDriver (adjust the path to your driver executable)
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriver driver = new ChromeDriver();
+
+        // Open the desired webpage
+        driver.get("https://example.com");
+
+        // Find elements using a common locator, like class name, tag name, etc.
+        List<WebElement> elements = driver.findElements(By.cssSelector(".example-class"));
+
+        // Ensure you only get the first 20 elements if more are found
+        int count = Math.min(elements.size(), 20);
+        for (int i = 0; i < count; i++) 
+        {
+            WebElement element = elements.get(i);
+            System.out.println("Element " + (i + 1) + ": " + element.getText());
+        }
+
+        // Close the driver
+        driver.quit();
+    }
+}
+
+find multiple web elements
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class FindMultipleElements 
+{
+    public static void main(String[] args) 
+    {
+        // Set up WebDriver (adjust the path to your driver executable)
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriver driver = new ChromeDriver();
+
+        // Open the desired webpage
+        driver.get("https://example.com");
+
+        // Find multiple elements using a locator, e.g., class name
+        List<WebElement> elements = driver.findElements(By.className("example-class"));
+
+        // Print the size and details of each element
+        System.out.println("Number of elements found: " + elements.size());
+        for (WebElement element : elements) 
+        {
+            System.out.println(element.getText());
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+=========================================================================================
+
+* Write scroll function to find the scroll web element
+
+scrollIntoView()  function scrolls the page until the specified element is visible.
+
+     JavascriptExecutor js = (JavascriptExecutor) driver;
+     js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+js.executeScript("window.scrollTo(0, document.body.scrollHeight)"); executes the JavaScript code to scroll to the bottom of the page. document.body.scrollHeight gets the total height of the page, and window.scrollTo scrolls to that position.
+
+     WebElement element = driver.findElement(By.id("targetElement")); // Find the element
+     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element); scrolls the page so that the element is visible. scrollIntoView(true) scrolls the element into view at the top of the page.
+
+=========================================================================================
+
+* Which version of selenium are you using and why?
+
+Selenium 4 is the latest stable version as of now, and it introduces new features like the WebDriver BiDi protocol, relative locators, and an improved Grid architecture. If you're working on new projects or want the latest features, Selenium 4 is highly recommended.
+
+BiDirectional (BiDi) Protocol Support: Enabling advanced browser interaction.
+
+Relative Locators: Simplifies locating elements in relation to others.
+
+Improved Grid System: Better distributed test execution.
+
+Compatibility with modern browsers.
+
+=========================================================================================
+
+* How can we find broken links in Selenium?
+
+We will extract all anchor tag elements, store in a list, iterate the list, get the URL using "href" attribute, open the HTTP connection, get the response, if response over 400, the link is broken.
+
+* What if we have more than 2000 links in web page, how can you reduce time?
+
+we can use HashSet and add all the unique URLs into it. By doing so, there will be less links to connect and time would be reduced.
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CheckBrokenLinks 
+{
+	public static WebDriver driver;
+    public static void main(String[] args) 
+    {
+        // Initialize the driver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver"); // Set the path to your ChromeDriver
+        driver = new ChromeDriver();
+        // Navigate to webpage
+        driver.get("https://demoqa.com/links");
+        // Find all the anchor elements
+        List<WebElement> linkElements = driver.findElements(By.tagName("a"));
+        Set<String> links = new HashSet<>();
+        
+        for (WebElement element : linkElements) 
+        {
+            String url = element.getAttribute("href"); // Use getAttribute instead of getDomAttribute
+            links.add(url); // Collecting non-duplicate URLs
+        }
+        ExecutorService executor = Executors.newFixedThreadPool(50);
+        for (String link : links) { // Iterate over all the links
+            executor.submit(() -> verifyLink(link));
+        }
+        executor.shutdown();
+        
+     // Close the driver
+        driver.quit();
+    }
+    public static void verifyLink(String url) 
+    {
+        // Open connection with links
+        try {
+            URL link = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) link.openConnection();
+            connection.setConnectTimeout(3000);
+            connection.connect();
+            if (connection.getResponseCode() >= 400) { // Check if the links are responding with a 400+ status code
+                System.out.println(url + " - " + connection.getResponseMessage() + " - is broken");
+            }
+        } catch (Exception e) {
+            System.out.println(url + " is broken");
+        }
+    }
+}
+
+=========================================================================================
 TestNG Basics
 
 * List some common TestNG annotations you use.

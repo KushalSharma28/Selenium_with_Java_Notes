@@ -41,6 +41,35 @@ JavaScript execution: As a fallback
 
 * Explain how to handle dropdowns and alerts using Selenium WebDriver.
 
+Dropdowns:
+Select dropdown = new Select(driver.findElement(By.id("dropdown")));
+
+// Select by visible text
+dropdown.selectByVisibleText("Option 1");
+
+// Select by value
+dropdown.selectByValue("option1");
+
+// Select by index
+dropdown.selectByIndex(0);
+
+Alerts:
+
+// Switch to alert
+Alert alert = driver.switchTo().alert();
+
+// Accept (OK)
+alert.accept();
+
+// Dismiss (Cancel)
+alert.dismiss();
+
+// Get text
+String alertText = alert.getText();
+
+// Send text (for prompts)
+alert.sendKeys("text");
+
 =========================================================================================
 
 * how to find list of multiple web elements in selenium
@@ -216,11 +245,84 @@ public class CheckBrokenLinks
 TestNG Basics
 
 * List some common TestNG annotations you use.
+
+@Test - Marks a method as test method
+
+@BeforeSuite/@AfterSuite - Runs before/after all tests in suite
+
+@BeforeTest/@AfterTest - Runs before/after all tests in <test> tag
+
+@BeforeClass/@AfterClass - Runs before/after all tests in class
+
+@BeforeMethod/@AfterMethod - Runs before/after each test method
+
+@DataProvider - Provides data for data-driven tests
+
+@Parameters - For parameterized tests
+
+@Listeners - For custom listeners
+
+=========================================================================================
+
 * How do you set test execution priority in TestNG?
+
+Lower priority numbers run first. Tests without priority run alphabetically.
+
+@Test(priority = 1)
+public void firstTest() {
+    // Test code
+}
+
+@Test(priority = 2)
+public void secondTest() {
+    // Test code
+}
+
+=========================================================================================
+
 * Explain how to run tests in parallel using TestNG.
+
+Parallel options:
+
+methods: Run test methods in parallel
+
+tests: Run different <test> tags in parallel
+
+classes: Run test classes in parallel
+
+instances: Run instances in parallel
+
+In TestNG XML:
+<suite name="Parallel Suite" parallel="methods" thread-count="5">
+<test name="Parallel Tests">
+    <classes>
+        <class name="com.example.TestClass"/>
+    </classes>
+</test>
+</suite>
+
+=========================================================================================
+
 * How do you generate and customize reports in TestNG?
 
+=========================================================================================
 Real-Time Scenario
 
 Scenario: Automating a login page where the login button sometimes takes time to appear.
 Question: How will you handle such a scenario in your automation script using Selenium best practices?
+
+public void login(String username, String password) {
+    driver.findElement(By.id("username")).sendKeys(username);
+    driver.findElement(By.id("password")).sendKeys(password);
+    
+    // Wait for login button to be clickable
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginBtn")));
+    
+    loginButton.click();
+    
+    // Then wait for next page to load
+    wait.until(ExpectedConditions.urlContains("dashboard"));
+}
+
+=========================================================================================

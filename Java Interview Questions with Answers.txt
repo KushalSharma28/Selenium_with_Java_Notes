@@ -156,9 +156,51 @@ System.out.println(findSecondHighest(arr)); // 34
 
 =============================================================================================================
 
-8. 
+8. Does Map Support Null Keys?
+
+HashMap: Supports one null key (keys must be unique).
+
+TreeMap: Does not support null keys (throws NullPointerException because it requires natural ordering/comparison).
+
+ConcurrentHashMap: Does not allow null keys/values (for thread safety).
 
 =============================================================================================================
 
-9. 
+9. Can We Declare a Constructor static in Java?
+
+No, constructors are implicitly called when an object is created, so they cannot be static.
+
+static belongs to the class, while constructors initialize instance members.
+
+=============================================================================================================
+
+10. Can We Override and Overload Static Methods in Java?
+
+Overriding: No, static methods are class-level (resolved at compile-time via static binding).
+class Parent { static void foo() {} }
+class Child extends Parent { 
+    static void foo() {} // Hiding (not overriding)
+}
+Overloading: Yes, same method name with different parameters.
+
+=============================================================================================================
+
+11. Can We Create public static final Variables in Java?
+
+Yes, they act as global constants.
+public class Constants {
+    public static final int MAX_VALUE = 100;
+}
+
+=============================================================================================================
+
+12. Calling Constructors of Other/Same Class
+
+Same Class: Use this() (must be the first statement).
+class A {
+    A() { this(10); } // Calls parameterized constructor
+    A(int x) { }
+}
+
+Other Class: Use super() (for parent class constructor).
 =============================================================================================================

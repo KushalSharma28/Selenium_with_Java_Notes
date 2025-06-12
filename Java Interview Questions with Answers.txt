@@ -203,4 +203,7 @@ class A {
 }
 
 Other Class: Use super() (for parent class constructor).
+class B extends A {
+    B() { super(); } // Calls A's constructor
+}
 =============================================================================================================

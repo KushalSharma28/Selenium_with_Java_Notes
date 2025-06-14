@@ -326,3 +326,57 @@ public void login(String username, String password) {
 }
 
 =========================================================================================
+
+* Why Use Constructors in Selenium?
+
+Initialize WebDriver, Page Objects, or test data.
+public class LoginTest {
+    WebDriver driver;
+    public LoginTest() {
+        driver = new ChromeDriver();
+    }
+}
+
+=========================================================================================
+
+* Running a Test Method/Class 100 Times
+
+TestNG: Use invocationCount.
+@Test(invocationCount = 100)
+public void testMethod() {}
+
+=========================================================================================
+
+* Does priority in TestNG Support Negative/Zero Values?
+
+Yes, priorities can be negative, zero, or positive.
+@Test(priority = -1) // Runs first
+@Test(priority = 0)  // Runs next
+
+=========================================================================================
+
+* Parameterized Testing in TestNG
+
+@Parameters (XML-driven):
+@Test
+@Parameters({"username", "password"})
+public void login(String user, String pass) {}
+
+@DataProvider (Java-driven):
+@DataProvider
+public Object[][] data() { return new Object[][]{{"user1"}, {"user2"}}; }
+@Test(dataProvider = "data")
+public void test(String user) {}
+
+=========================================================================================
+
+* @BeforeTest vs @BeforeClass
+@BeforeTest: Runs once per <test> tag in XML
+Suite → Test → Class → Method
+
+@BeforeClass: Runs once per test class
+Class → Method
+
+=========================================================================================
+
+=========================================================================================

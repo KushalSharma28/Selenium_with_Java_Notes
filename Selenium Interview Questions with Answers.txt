@@ -379,4 +379,64 @@ Class → Method
 
 =========================================================================================
 
+* Writing a Data Provider in TestNG
+@DataProvider(name = "loginData")
+public Object[][] provideData() {
+    return new Object[][]{
+        {"user1", "pass1"},
+        {"user2", "pass2"}
+    };
+}
+@Test(dataProvider = "loginData")
+public void loginTest(String user, String pass) {}
+
+=========================================================================================
+
+* Groups in TestNG
+Group tests for selective execution:
+@Test(groups = {"smoke"})
+public void smokeTest() {}
+
+Run via XML:
+<groups>
+    <run><include name="smoke"/></run>
+</groups>
+
+=========================================================================================
+
+* Waits in Selenium
+Implicit Wait	Global wait for element presence (driver.manage().timeouts().implicitlyWait).
+Explicit Wait	Condition-based (WebDriverWait + ExpectedConditions).
+Fluent Wait	Polling with custom conditions.
+
+=========================================================================================
+
+* Parallel Execution in Selenium
+TestNG XML:
+<suite name="Suite" parallel="methods" thread-count="5">
+    <test name="Test">
+        <classes>
+            <class name="TestClass"/>
+        </classes>
+    </test>
+</suite>
+
+Selenium Grid: Distribute tests across nodes.
+
+=========================================================================================
+
+* Running Selenium Tests in Jenkins
+1. Install Jenkins plugins (Git, Maven, TestNG).
+
+2. Create a Jenkins job:
+
+ - Source Code Management: Git repo URL.
+
+ - Build Trigger: Poll SCM or webhook.
+
+ - Build: mvn clean test.
+
+3. Publish TestNG reports using Post-build Actions.
+
+=========================================================================================
 =========================================================================================

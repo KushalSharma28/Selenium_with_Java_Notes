@@ -264,3 +264,33 @@ public int climbStairs(int n) {
 // climbStairs(3) → 3 (1+1+1, 1+2, 2+1)
 
 =========================================================================================
+17. What is the difference between String, StringBuilder, and StringBuffer? When would you use which?
+
+String:
+1.Immutable (cannot be modified after creation)
+2.Thread-safe (safe for multithreading)
+3.Use case: Fixed strings, constants, shared data
+
+// String - immutable
+String str = "Hello";
+str += " World";  // Creates new String object
+
+StringBuilder:
+1.Mutable (can be modified)
+2.Not thread-safe (faster, but unsafe for multithreading)
+3.Use case: Single-threaded string manipulation (e.g., loops, dynamic strings)
+
+// StringBuilder - mutable, not thread-safe
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");  // Modifies existing object
+
+StringBuffer:
+1.Mutable (can be modified)
+2.Thread-safe (slower due to synchronization)
+3.Use case: Multithreaded string manipulation
+
+// StringBuffer - mutable, thread-safe
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World");  // Modifies existing object with synchronization
+
+=========================================================================================

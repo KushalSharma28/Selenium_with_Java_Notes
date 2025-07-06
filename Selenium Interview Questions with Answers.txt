@@ -305,6 +305,17 @@ In TestNG XML:
 
 * How do you generate and customize reports in TestNG?
 
+Default TestNG Reports: Generated in test-output folder
+
+Extent Reports: Popular third-party reporting
+  ExtentReports extent = new ExtentReports();
+  ExtentTest test = extent.createTest("Test Name");
+  test.log(Status.INFO, "Test step details");
+  extent.flush();
+
+Allure Reports: Generates interactive HTML reports
+
+Custom Listeners: Implement ITestListener to create custom reporting
 =========================================================================================
 Real-Time Scenario
 

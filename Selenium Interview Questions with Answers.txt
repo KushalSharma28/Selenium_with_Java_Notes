@@ -439,4 +439,107 @@ Selenium Grid: Distribute tests across nodes.
 3. Publish TestNG reports using Post-build Actions.
 
 =========================================================================================
+
+* Difference between NoSuchElementException and StaleElementReferenceException
+
+NoSuchElementException: Thrown when Selenium cannot find an element on the page using the specified locator. This typically happens when the element doesn't exist in the DOM or hasn't loaded yet.
+
+StaleElementReferenceException: Thrown when you have a reference to a web element that is no longer attached to the DOM (the page has changed or refreshed since the element was located). The element was found but became "stale" before you interacted with it.
+
+=========================================================================================
+
+* If a developer removes a locator from the DOM at runtime
+
+StaleElementReferenceException will be thrown when you try to interact with that element after it's been removed.
+=========================================================================================
+
+* Different types of exceptions thrown in Selenium:
+
+Common Selenium exceptions include:
+
+NoSuchElementException: Element not found
+
+StaleElementReferenceException: Element reference is stale
+
+ElementNotVisibleException: Element exists but isn't visible
+
+ElementNotInteractableException: Element exists but can't be interacted with
+
+TimeoutException: Operation timed out
+
+NoSuchWindowException: Window not found
+
+NoSuchFrameException: Frame not found
+
+NoAlertPresentException: Alert not found
+
+UnexpectedTagNameException: Wrong tag name for the operation
+
+MoveTargetOutOfBoundsException: Action would move outside valid area
+
+InvalidSelectorException: Invalid CSS/XPath selector
+
+WebDriverException: Base exception for all WebDriver errors
+
+=========================================================================================
+
+* Automating a responsive table to print the second-highest price dynamically
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SecondHighestPriceTable {
+    public static void main(String[] args) {
+        // Set the path to your ChromeDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // Navigate to the webpage with the responsive table
+            driver.get("https://example.com/your-table-page");
+
+            // Find all price elements in the table (adjust the locator as needed)
+            List<WebElement> priceElements = driver.findElements(By.xpath("//table//td[contains(@class,'price')]"));
+
+            // Extract prices and convert to Double
+            List<Double> prices = new ArrayList<>();
+            for (WebElement element : priceElements) {
+                try {
+                    String priceText = element.getText()
+                            .replace("$", "")
+                            .replace(",", "")
+                            .trim();
+                    double price = Double.parseDouble(priceText);
+                    prices.add(price);
+                } catch (NumberFormatException e) {
+                    // Skip if price can't be parsed
+                    continue;
+                }
+            }
+
+            // Handle cases where we don't have enough prices
+            if (prices.size() < 2) {
+                System.out.println("Not enough prices found in the table");
+                return;
+            }
+
+            // Sort in descending order and get unique values
+            List<Double> uniquePrices = new ArrayList<>(new HashSet<>(prices));
+            Collections.sort(uniquePrices, Collections.reverseOrder());
+
+            // Get the second highest price
+            double secondHighest = uniquePrices.size() > 1 ? uniquePrices.get(1) : uniquePrices.get(0);
+            System.out.printf("Second highest price: $%.2f%n", secondHighest);
+
+        } finally {
+            // Close the browser
+            driver.quit();
+        }
+    }
+}
 =========================================================================================
